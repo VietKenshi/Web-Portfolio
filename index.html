@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Portfolio</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <script src="https://unpkg.com/typed.js@2.0.15/dist/typed.umd.js"></script>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">DTMT</a>
+
+        <nav class="navbar">
+            <a href="#home" style="--i:1" class="active">Home</a>
+            <a href="#about" style="--i:2">About</a>
+            <a href="#" style="--i:3">Skills</a>
+            <a href="#" style="--i:4">Portfolio</a>
+            <a href="#" style="--i:5">Contact</a>
+        </nav>
+
+        <nav class="menu">
+            <div class="menu-nav">
+            <div class="menu-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="menu-list">
+                <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+                <li><a href="#about" onclick="toggleMenu()">About</a></li>
+                <li><a href="#" onclick="toggleMenu()">Skills</a></li>
+                <li><a href="#" onclick="toggleMenu()">Portfolio</a></li>
+                <li><a href="#" onclick="toggleMenu()">Contact</a></li>
+            </ul>
+        </div>
+        </nav>
+
+    </header>
+    <section class="home" id="home">
+        <div class="home-content">
+            <h3>Hello, It's Me</h3>
+            <h1>DTMT</h1>
+            <h3>And I'm a <span class="text"></span></h3>
+            <p>I'm a web Designer with little experience.
+                <br>expertise is to create and design websites, Frontend and many more...</p>
+            <div class="home-sci">
+                <a href="#" style="--i:6"><i class='bx bxl-facebook'></i></a>
+                <a href="#" style="--i:7"><i class='bx bxl-instagram'></i></a>
+                <a href="#" style="--i:8"><i class='bx bxl-whatsapp'></i></a>
+                <a href="#" style="--i:9"><i class='bx bxl-tiktok'></i></a>
+            </div>
+            <a href="#" class="btn-box">More About Me</a>
+        </div>
+        <div class="home-img">
+            <img src="profile.jpg" alt="Profile">
+        </div>
+    </section>
+    <section class="about" id="about">
+        <div class="about-img">
+            <img src="profile.jpg" alt="about me">
+        </div>
+        <div class="about-text">
+            <h2>About<span>Me</span></h2>
+            <h4>Freelancer Web Developer</h4>
+            <p>I'm a web designer with a passion for creating beautiful and functional websites. With a background in both design and development, I have the skills to bring your vision to life. Throughout my career, I've worked on a variety of projects, honing my skills and expanding my knowledge in the ever-evolving field of web development.</p>
+            <a href="CV.pdf" download="Muj_Zivotopis.pdf" class="btn-box">Download CV</a>
+        </div>
+    </section>
+    <script src="main.js"></script>
+</body>
+</html>

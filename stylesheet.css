@@ -1,0 +1,469 @@
+/* Full Site Style */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    
+    /* VŠECHNO VYŘEŠÍ TENTO JEDINÝ ŘÁDEK: */
+    caret-color: transparent !important; /* Čárka po kliknutí bude neviditelná (nezanechá stopu), ale textový kurzor "I" při najetí i označování bude normálně fungovat */
+}
+
+/* ----- Plynulý posun stránky ----- */
+html {
+    scroll-behavior: smooth; 
+}
+
+/* ----- Výchozí chování kurzorů a výběru ----- */
+
+/* Odkazy a tlačítka budou mít vždy správně ručičku */
+a, button, .btn-box, .home-sci a {
+    cursor: pointer !important;
+}
+
+/* Texty budou mít přirozený textový kurzor "I" a půjdou normálně kopírovat */
+.home-content *, .about-text * {
+    user-select: text;
+    -webkit-user-select: text;
+    /* cursor zde vůbec nenastavujeme, prohlížeč sám přirozeně ukáže "I" nad textem */
+}
+
+/* Ve formulářích (pokud je přidáš) se blikající čárka normálně ukáže, aby uživatel viděl, kde píše */
+input, textarea {
+    caret-color: auto !important;
+}
+
+body {
+    color: black;
+}
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    /* Přidání stínu pro oddělení hlavičky od obsahu */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+/* Navbar menu full screen */
+.logo {
+    position: relative;
+    font-size: 25px;
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: default;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+}
+.navbar a {
+    display: inline-block;
+    font-size: 25px;
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 35px;
+    transition: .3s;
+    opacity: 0;
+    animation: slideTop .5s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+}
+.navbar a:hover {
+    color: darkslateblue;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+}
+/* Navbar menu less then normal size*/
+.menu {
+    display: none;
+}
+.menu-nav {
+    position: relative;
+    display: inline-block;
+}
+.menu-icon{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 20px;
+    width: 22px;
+    cursor: pointer;
+}
+.menu-icon span {
+    width: 100%;
+    height: 2px;
+    background: black;
+    transition: all 0.3 ease-in-out;
+}
+.menu-list {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    width: fit-content;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3 ease-in-out;
+    list-style: none;
+}
+.menu-list a {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+    color: black;
+    text-decoration: none;
+    transition: all 0.3 ease-in-out;
+}
+/* Nav-Menu animation and home content styles */
+.menu-list a:hover {
+    background: darkslateblue;
+    color: white;
+}
+.menu-list li {
+    list-style: none;
+}
+.menu-list.open {
+    max-height: 300px;
+}
+.menu-icon.open span:first-child {
+    transform: rotate(45deg) translate(10px, 3px);
+}
+.menu-icon.open span:nth-child(2) {
+    opacity: 0;
+}
+.menu-icon.open span:last-child {
+    transform: rotate(-45deg) translate(10px, -3px);
+}
+.menu-icon span:first-child {
+    transform: none;
+}
+.menu-icon span:first-child {
+    opacity: 1;
+}
+/* Home Section */
+/* Globální úprava sekce Home */
+.home {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;              /* Striktně vedle sebe */
+    justify-content: space-between; /* Rozdělí prostor mezi text vlevo a fotku vpravo */
+    align-items: center;            /* Vycentruje je vertikálně vůči sobě */
+    padding: 140px 10% 60px;        /* Zvětšený padding, aby horní menu netlačilo na obsah */
+    
+    /* Stínované pozadí */
+    background: linear-gradient(135deg, #dcdcdc 0%, #e8e8e8 50%, #f5f5f5 100%); 
+    color: #111111; 
+    overflow: hidden;               /* Pojistka, aby nic netrčelo ven spodem */
+}
+
+/* Kontejner pro fotku - teď ji natlačíme doprava */
+.home-img {
+    display: flex;
+    justify-content: flex-end;      /* Zarovná kruh úplně doprava */
+    align-items: center;
+    width: 45%;                     /* Vyhradíme fotce 45 % šířky webu */
+    flex-shrink: 0;                 /* Zákaz mačkání kruhu */
+}
+
+/* Fotka v kruhu */
+.home-img img {
+    width: 320px;                   /* Mírně zmenšeno na 320px, aby byla jistota, že se vejde */
+    height: 320px;         
+    object-fit: cover;     
+    border-radius: 50%;    
+    border: 6px solid #ffffff; 
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15); 
+}
+
+/* Kontejner pro text - omezíme ho víc, aby vpravo vznikla velká kapsa pro fotku */
+.home-content {
+    max-width: 50%;                 /* Zmenšeno na 50 %, text ustoupí fotce */
+    z-index: 2;
+}
+
+.home-content h3 {
+    font-size: 32px;
+    font-weight: 700;
+    opacity: 0;
+    animation: slideTop 1s ease forwards;
+    animation-delay: .3s;
+}
+.home-content h3:nth-of-type(2)
+{
+    margin-bottom: 30px;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: .7s;
+}
+.home-content h3 span {
+    color: darkslateblue;
+}
+.home-content h1 {
+    font-size: 56px;
+    font-weight: 600;
+    margin: 15px 0;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+    animation-delay: .5s;
+}
+.home-content p {
+    font-size: 20px;
+    opacity: 0;
+    animation: slideLeft 2s ease forwards;
+    animation-delay: 1s;
+}
+.home-sci a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 2px solid black;
+    border-radius: 50%;
+    font-size: 20px;
+    color: black;
+    text-decoration: none;
+    margin: 30px 15px 30px 0;
+    transition: .2s ease;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+}
+.home-sci a:hover {
+    background: darkslateblue;
+    border-color: darkslateblue;
+    color: white;
+}
+/* Button */
+.btn-box {
+    display: inline-block;
+    padding: 12px 28px;
+    background: black;
+    border-radius: 40px;
+    font-size: 16px;
+    color: white;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-weight: 600;
+    opacity: 0;
+    animation: slideTop 2s ease forwards;
+    animation-delay: 1.5s;
+}
+.btn-box:hover {
+    background: darkslateblue;
+}
+
+/* About Section */
+.about {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem; /* Větší mezera mezi fotkou a textem */
+    align-items: center; /* Vycentruje fotku a text vertikálně vedle sebe */
+    background-color: #f9f9f9; /* Světle šedé pozadí pro oddělení od ostatních sekcí */
+    padding: 120px 10%; /* Horní a spodní vnitřní okraj sekce */
+
+    /* TENTO ŘÁDEK vytvoří dostatek místa pod obsahem k doscrolování */
+    min-height: 100vh;
+
+    /* Volitelné: Jemný horní a spodní okraj pro extra předěl */
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.about-img {
+    display: flex;
+    justify-content: center; /* Vystředí fotku uvnitř jejího levého sloupce */
+}
+
+.about-img img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 15px;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Jemný stín pod fotkou */
+}
+
+.about-text h2 {
+    font-size: 52px;
+    margin-bottom: 10px;
+}
+.about-text h2 span{
+    color: darkslateblue;
+}
+.about-text h4{
+    font-size: 25px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 20px;
+}
+.about-text p {
+    color: black;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Animations */
+@keyframes slideRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes slideLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes slideTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes slideBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Jakmile je obrazovka menší než 768px (mobily a tablety) */
+@media (max-width: 768px) {
+    
+    .home {
+        flex-direction: column;    /* Prvky řadíme standardně pod sebe */
+        justify-content: center;
+        align-items: flex-start;   /* Text zůstane zarovnaný doleva */
+        padding: 120px 8% 40px;    /* Příjemné odsazení od okrajů */
+        overflow-x: hidden;        /* ŽÁDNÝ CHYBOVÝ SCROLL DO BOKŮ */
+    }
+
+    /* Text se roztáhne přes celou šířku, protože má dost místa */
+    .home-content {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    /* ----- TADY JE TA MAGIE: Fotka na mobilu úplně zmizí ----- */
+    .home-img {
+        display: none !important;
+    }
+
+    /* ---- FUNKČNÍ HAMBURGER MENU ---- */
+    /* Schováme klasický navbar */
+    .header .navbar {
+        display: none;
+    }
+
+    /* Zobrazíme hamburger tlačítko */
+    .menu {
+        display: block;
+        position: relative;
+    }
+
+    .menu-icon {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 20px;
+        cursor: pointer;
+        z-index: 1000;
+    }
+
+    .menu-icon span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: #111111; /* Černé čárky, aby byly vidět */
+        border-radius: 2px;
+    }
+
+    /* Vyskakovací seznam odkazů */
+    .menu-list {
+        display: none;
+        position: absolute;
+        top: 40px;
+        right: 0;
+        background-color: #ffffff;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        padding: 1rem;
+        width: 200px;
+        list-style: none;
+        z-index: 999;
+    }
+
+    /* Třída pro otevření menu přes JavaScript */
+    .menu-list.open {
+    display: block !important;
+    }
+
+    /* ----- ÚPRAVA SEKCE ABOUT PRO MOBILY ----- */
+    .about {
+        display: flex;
+        /* column-reverse otočí pořadí: fotka skočí NAHORU, text dolů */
+        flex-direction: column-reverse; 
+        justify-content: center;
+        align-items: center;
+        text-align: center; /* Vystředíme text pro lepší vzhled na mobilu */
+        padding: 80px 8% 40px;
+    }
+
+    /* Kontejner pro fotku v sekci About */
+    .about-img {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem; /* Udělá pěknou mezeru mezi fotkou a textem pod ní */
+    }
+
+    /* Samotná fotka v About: drží si svou pevnou kulatou velikost */
+    .about-img img {
+        width: 280px;  /* Pevná optimální šířka pro displej mobilu */
+        height: 280px; /* Pevná výška, aby kruh zůstal kruhem */
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    /* Textový obsah v About */
+    .about-content {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    /* Tlačítko Download CV vystředíme pod textem */
+    .about-content .btn-box {
+        margin: 20px auto 0; 
+        display: inline-block;
+    }
+}
