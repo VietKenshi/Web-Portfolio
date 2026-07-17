@@ -160,7 +160,7 @@ body {
     padding: 140px 10% 60px;        /* Zvětšený padding, aby horní menu netlačilo na obsah */
     
     /* Stínované pozadí */
-    background: linear-gradient(135deg, #dcdcdc 0%, #e8e8e8 50%, #f5f5f5 100%); 
+    background: linear-gradient(140deg, #f5f5f5 0%, #f5f5f5 50%, darkslateblue 100%); 
     color: #111111; 
     overflow: hidden;               /* Pojistka, aby nic netrčelo ven spodem */
 }
@@ -172,6 +172,7 @@ body {
     align-items: center;
     width: 45%;                     /* Vyhradíme fotce 45 % šířky webu */
     flex-shrink: 0;                 /* Zákaz mačkání kruhu */
+    animation: slideLeft 2s ease forwards;
 }
 
 /* Fotka v kruhu */
@@ -255,7 +256,7 @@ body {
     text-decoration: none;
     font-weight: 600;
     opacity: 0;
-    animation: slideTop 2s ease forwards;
+    animation: slideTop 1s ease forwards;
     animation-delay: 1.5s;
 }
 .btn-box:hover {
@@ -292,11 +293,13 @@ body {
     background: white;
     padding: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Jemný stín pod fotkou */
+    animation: slideRight 2s ease forwards;
 }
 
 .about-text h2 {
     font-size: 52px;
     margin-bottom: 10px;
+    animation: slideLeft 1s ease forwards;
 }
 .about-text h2 span{
     color: darkslateblue;
@@ -306,14 +309,91 @@ body {
     font-weight: 600;
     color: black;
     margin-bottom: 20px;
+    animation: slideLeft 2s ease forwards;
 }
 .about-text p {
     color: black;
     font-size: 16px;
     line-height: 1.6;
     margin-bottom: 30px;
+    animation: slideLeft 3s ease forwards;
 }
 
+.skills {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    background: #f5f5f5;
+}
+
+.skills-content {
+    max-width: 800px;
+    width: 100%;
+}
+
+.skills-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    text-align: left;
+}
+
+.skills-content h2 span {
+    color: darkslateblue;
+}
+
+.skill-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.bar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.percentage {
+    background: #333;
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.progress-line {
+    width: 100%;
+    height: 15px;
+    background: #e0e0e0;
+    border-radius: 15px;
+    overflow: hidden;
+}
+/* Animation classes for skills */
+.animate-skill {
+    animation: fillSkill 2s ease forwards !important;
+}
+
+.animate-slide-left {
+    animation: slideLeft 1s ease forwards !important;
+}
+
+.progress-line span {
+    display: block;
+    height: 100%;
+    background: darkslateblue;
+    border-radius: 15px;
+    width: 0; /* Start at 0 width */
+}
 /* Animations */
 @keyframes slideRight {
     0% {
@@ -353,6 +433,14 @@ body {
     100% {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+@keyframes fillSkill {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: var(--skill-width);
     }
 }
 
