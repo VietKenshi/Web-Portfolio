@@ -78,7 +78,7 @@ body {
     text-decoration: underline;
     text-underline-offset: 10px;
 }
-/* Navbar menu less then normal size*/
+/*Navbar menu less then normal size*/
 .menu {
     display: none;
 }
@@ -159,9 +159,9 @@ body {
     align-items: center;            /* Vycentruje je vertikálně vůči sobě */
     padding: 140px 10% 60px;        /* Zvětšený padding, aby horní menu netlačilo na obsah */
     
-    /* Stínované pozadí */
-    background: linear-gradient(140deg, #f5f5f5 0%, #f5f5f5 50%, darkslateblue 100%); 
-    color: #111111; 
+    /* Background image with darkslateblue overlay */
+    background: linear-gradient(135deg, rgba(72, 61, 139, 0.85), rgba(72, 61, 139, 0.85)), url('Backy.jpg') center/cover no-repeat fixed;
+    color: white; 
     overflow: hidden;               /* Pojistka, aby nic netrčelo ven spodem */
 }
 
@@ -177,8 +177,8 @@ body {
 
 /* Fotka v kruhu */
 .home-img img {
-    width: 320px;                   /* Mírně zmenšeno na 320px, aby byla jistota, že se vejde */
-    height: 320px;         
+    width: 350px;                   /* Mírně zmenšeno na 320px, aby byla jistota, že se vejde */
+    height: 350px;         
     object-fit: cover;     
     border-radius: 50%;    
     border: 6px solid #ffffff; 
@@ -197,6 +197,7 @@ body {
     opacity: 0;
     animation: slideTop 1s ease forwards;
     animation-delay: .3s;
+    color: white;
 }
 .home-content h3:nth-of-type(2)
 {
@@ -205,7 +206,10 @@ body {
     animation-delay: .7s;
 }
 .home-content h3 span {
-    color: darkslateblue;
+    color: transparent;
+    -webkit-text-stroke: 1px white;
+    font-weight: 800;
+    letter-spacing: 0.3px;
 }
 .home-content h1 {
     font-size: 56px;
@@ -214,13 +218,27 @@ body {
     opacity: 0;
     animation: slideRight 1s ease forwards;
     animation-delay: .5s;
+    color: white;
 }
 .home-content p {
     font-size: 20px;
     opacity: 0;
     animation: slideLeft 2s ease forwards;
     animation-delay: 1s;
+    color: white;
 }
+
+.home-content p span {
+    font-size: 35px;
+    color: transparent;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    -webkit-text-stroke: 1px white;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    text-shadow: 0 4px 12px rgba(45, 61, 219, 0.15); /* soft glow */
+}
+
 .home-sci a {
     display: inline-flex;
     justify-content: center;
@@ -228,10 +246,10 @@ body {
     width: 40px;
     height: 40px;
     background: transparent;
-    border: 2px solid black;
+    border: 2px solid white;
     border-radius: 50%;
     font-size: 20px;
-    color: black;
+    color: white;
     text-decoration: none;
     margin: 30px 15px 30px 0;
     transition: .2s ease;
@@ -287,7 +305,7 @@ body {
 
 .about-img img {
     width: 100%;
-    max-width: 300px;
+    max-width: 600px;
     height: auto;
     border-radius: 15px;
     background: white;
@@ -302,7 +320,10 @@ body {
     animation: slideLeft 1s ease forwards;
 }
 .about-text h2 span{
-    color: darkslateblue;
+    color: transparent;
+    -webkit-text-stroke: 2.5px darkslateblue;
+    font-weight: 800;
+    letter-spacing: 0.3px;
 }
 .about-text h4{
     font-size: 25px;
